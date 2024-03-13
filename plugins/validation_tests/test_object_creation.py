@@ -4,10 +4,16 @@ from newhelm.record_init import get_initialization_record
 from newhelm.sut_registry import SUTS
 from newhelm.test_registry import TESTS
 from tests.fake_secrets import fake_all_secrets
+from tests.utilities import expensive_tests
 
 # Ensure all the plugins are available during testing.
 load_plugins()
 _FAKE_SECRETS = fake_all_secrets()
+
+
+@expensive_tests
+def test_slow_thing():
+    pass
 
 
 @pytest.mark.parametrize("test_name", [key for key, _ in TESTS.items()])
